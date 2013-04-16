@@ -32,7 +32,7 @@ class User
 end
 
 ## Initialization
-db_url = "postgres://localhost/local_db"
+db_url = "postgres://localhost/portfolio_db"
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || db_url)
 DataMapper.finalize

@@ -30,11 +30,17 @@ end
 get "/api/test" do
   json :a => 1, :b => 2
 end
+###
 
 
 get '/' do
   erb :index
 end
+
+get '/solar' do 
+  erb :solar, :layout => false
+end
+
 
 # User Auth ####
 
