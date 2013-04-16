@@ -63,12 +63,12 @@ canvas.style.margin = "-10px";
 document.body.appendChild(canvas);
 
 // Background image1
-var bg1Ready = false;
-var bg1Image = new Image();
-bg1Image.onload = function () {
-  bg1Ready = true;
-};
-bg1Image.src = "internal/images/solar-bg.jpg";
+// var bg1Ready = false;
+// var bg1Image = new Image();
+// bg1Image.onload = function () {
+//   bg1Ready = true;
+// };
+// bg1Image.src = "internal/images/solar-bg.jpg";
 
 
 // Hero image
