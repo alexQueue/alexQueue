@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <%= partial :head %>
     <title>AlexQueue: Solar</title>
+
   </head>
   <body>
-    <h1 style="color: white;"> SOLAR SANDBOX</h1>
-    <h2 style="color: white;">Gravity Simulator App</h2>
-    <h3 style="color: white;">Under Construction</h3>
-    <a href="http://twitter.com/alexQueue">Contact</a>
+    <h1> SOLAR SANDBOX</h1>
+    <h2>Gravity Simulator App</h2>
+    <h3>Under Construction</h3>
+    <canvas id="canvas"></canvas>
+    <script src="internal/js/drawMethods.js"></script>
+    <script src="internal/js/solar-inputs.js"></script>
 
     <script src="internal/js/solar.js"></script>
+
     <footer>
       <hr>
       <a href="http://twitter.com/alexQueue">Contact</a>
@@ -19,7 +23,9 @@
   <style>
     body {
       font-family: 'Futura';
+      color: orangered;
       text-align: center;
-      background:url(/internal/images/solar-bg.jpg) no-repeat;
+      background-color: black;
+      /*background:url(/internal/images/solar-bg.jpg) no-repeat;*/
     }
 </html>

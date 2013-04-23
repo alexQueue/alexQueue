@@ -1,61 +1,8 @@
-//Functional methods:
-
-
-
-
-//
-/* draw a sprite with rotation
- * // [imageObject] this is image object which is returned loadImage
- * // [x] screen x coordinate
- * // [y] screen y coordinate
- * // [rotation] rotation angle in radians (normal value 0.0)
- * // [scale] sprite scale (normal value 1.0)
- */
-function drawSprite(imageObject, x, y, rotation, scale)
-{
-
-
-    var w = imageObject.width;
-    var h = imageObject.height;
-
-    // save state
-    ctx.save();
-
-    // set screen position
-    ctx.translate(x, y);
-
-    // set rotation
-    ctx.rotate(-rotation);
-
-    // set scale value
-    ctx.scale(scale, scale);
-
-    // draw image to screen drawImage(imageObject, sourceX, sourceY, sourceWidth, sourceHeight,
-    // destinationX, destinationY, destinationWidth, destinationHeight)
-    ctx.drawImage(imageObject, 0, 0, w, h, -w/2, -h/2, w, h);
-    
-    // restore state
-    ctx.restore();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Game logic and boilerplate code
 
 // Create the canvas
-var canvas = document.createElement("canvas");
+// var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth + 5;//document.body.clientWidth;
 canvas.height = window.innerHeight + 5;//document.body.clientHeight;
@@ -63,96 +10,128 @@ canvas.style.margin = "-10px";
 document.body.appendChild(canvas);
 
 // Background image1
-// var bg1Ready = false;
-// var bg1Image = new Image();
-// bg1Image.onload = function () {
-//   bg1Ready = true;
-// };
-// bg1Image.src = "internal/images/solar-bg.jpg";
-
-
-// Hero image
-var heroReady = false;
-var heroImage = new Image();
-heroImage.onload = function () {
-  heroReady = true;
+var bg1Ready = false;
+var bg1Image = new Image();
+bg1Image.onload = function () {
+  bg1Ready = true;
 };
-// heroImage.src = "images/plane.png";
+bg1Image.src = "internal/images/solar-bg.jpg";
 
+function planet(x,y,radius,r,g,b, V_x, V_y)
+{
+  this.x=x;
+  this.y=y;
+  this.radius=radius;
+  this.r=r;
+  this.g=g;
+  this.b=b;
+  this.V_x=V_x;
+  this.V_y=V_y;
+  this.A_x = 0;
+  this.A_y = 0;
 
-
-
-
-// Game objects
-var hero = {
-    V_x: 0 // movement in pixels per second
-  , V_y: 0
-  ,   width: 170
-  ,   height: 72
-  , distance: 0
-  , altitude: 0
-  , angle: 0  //in degrees?
-};
-var monster = {};
-var monstersCaught = 0;
-
-// Handle keyboard controls
-var keysDown = {};
-
-addEventListener("keydown", function (e) {
-  keysDown[e.keyCode] = true;
-}, false);
-
-addEventListener("keyup", function (e) {
-  delete keysDown[e.keyCode];
-}, false);
+  // function updateAcceleration() {
+  //   updateAcceleration(this);
+  // }
+}
+function planet(position, velocity, radius, r,g,b) {
+  this.position = position;
+  this.velocity = velocity;
+  this.acceleration = new vector(0, 0);
+  this.radius = radius;
+  this.r = r;
+  this.g = g;
+  this.b = b;
+}
+function vector(x, y) {
+  this.x=x;
+  this.y=y;
+}
+var system = {};
+var planets = [
+    new planet(100,100,50, 0, 0, 255, 0, 0)
+  ];
 
 // Reset the game when the player catches a monster
 var reset = function () {
-  hero.x = 50;
-  hero.y = 50;//canvas.height-3/2*hero.height;
+  console.log('reset');
 };
 
 
-
-var updateInput = function (modifier) {
-  if (38 in keysDown) { // Player holding up
-    //hero.V_y -= 100 * modifier;
-    hero.angle += .3*modifier;
-  }
-  if (40 in keysDown) { // Player holding down
-    //hero.V_y += 100 * modifier;
-    hero.angle -= .3*modifier;
-  }
-  if (37 in keysDown) { // Player holding left
-    if (onGround) {
-      hero.V_x -= engineStrength/3 * modifier;
-    } else {
-      //airbrakes: Just increases drag.
-      hero.V_x -= airResistance*hero.V_x*hero.V_x*modifier*5
-    }
-  }
-  if (39 in keysDown) { // Player holding right
-    //TODO: alter this based on the angle
-    hero.V_x += Math.cos(hero.angle)*engineStrength * modifier;
-    hero.V_y -= Math.sin(hero.angle)*engineStrength * modifier;
-
-  }
-  if (87 in keysDown) {
-    hero.angle += .3 * modifier;
-  }
-  if (83 in keysDown) {
-    hero.angle -= .3 * modifier;
-  }
-}
-
+//Physics
 //global physics vars
 var gravity = 1;    // to be tuned
 var massFactor = 1; // to be tuned
 
 var updatePhysics = function(modifier) {
-  
+  updateEulerHalfstep(modifier);
+  updateCollisions(modifier);
+};
+function updateAcceleration (system) {
+  // system is any planetary system. Can be global planets object or a derivation of it.
+  for (j=0;j<system.length;j++) {
+    for (k=j;k<system.length;k++) {
+      var gravity_vector = new vector(0, 0);
+      var distance_vector = new vector((system[j].x - system[k].x), (system[j].y - system[k].y) );
+
+      var distance = Math.sqrt( Math.pow((system[j].x - system[k].x), 2) - Math.pow((system[j].y - system[k].y), 2) );
+      if (2*distance < system[j].radius || 2*distance < system[k].radius) {
+        gravity_vector = {x: 0, y: 0};
+      } else {
+        var C = gravity * system[j].mass * system[k].mass / Math.pow(distance, 3);
+        gravity_vector = {x: C * distance_vector.x}
+      }
+      system[j].addForce(gravity_vector);
+      // Circle(planets[i].x, planets[i].y, planets[i].radius, planets[i].r, planets[i].g, planets[i].b);
+    }
+  }
 }
+var updateEulerHalfstep = function(modifier) {
+  dt = modifier;
+  /* 
+     Step 1:
+        Advance position by half a timestep:
+        p_(n+1/2) = p_n + v_n*dt/2
+     Step 2:
+        Calculate accelerations at these positions: 
+        a_(n+1/2) = f(p_n+1/2)
+     Step 3:
+        Advance velocity using new a_n+1/2: 
+        v_(n+1) = v_n + a_(n+1/2) * dt
+     Step 4:
+        Advance position with an average of velocities:
+        p_(n+1) = p_n + (v_n + v_(n+1)) * dt/2
+     */
+
+  // Step 1: Advance position by half a timestep
+  var halfStep = jQuery.extend({},planets);
+
+  for (i=0; i<halfStep.length; i++) {
+    halfStep[i].x = halfStep[i].x + halfStep[i].V_x*dt/2.0;
+    halfStep[i].y = halfStep[i].y + halfStep[i].V_y*dt/2.0;
+  }
+
+  // NOT DONE
+  /*
+    //Step 3: Advance velocity using new a_n+1/2
+    for (int i = 0; i < [self.planets count]; i++) {
+        Planet *current = [self.planets objectAtIndex:i];
+        Planet *halfStepPlanet = [halfStep.planets objectAtIndex:i];
+        
+        [current setVelocity:GLKVector2Add(current.velocity, GLKVector2MultiplyScalar(halfStepPlanet.acceleration, dt))];
+    }
+    //Step 4: Advance position with an average of velocities
+    // Note: Since I haven't changed velocities in halfStep system, I can those as my V_n, where self is V_(n+1)
+    for (int i = 0; i < [self.planets count]; i++) {
+        Planet *current = [self.planets objectAtIndex:i];
+        if (!current.paused) {
+            Planet *halfStepPlanet = [halfStep.planets objectAtIndex:i];
+            [current setPosition:GLKVector2Add(current.position, GLKVector2MultiplyScalar( GLKVector2Add(current.velocity, halfStepPlanet.velocity), dt/2.0))];
+        }
+    } */
+
+}
+
 var updateCollisions = function(modifier) {
 
   
@@ -166,7 +145,7 @@ var updateCollisions = function(modifier) {
   //   ++monstersCaught;
   //   //reset();
   // }
-}
+};
 
 // Update game objects
 var update = function (modifier) {
@@ -179,43 +158,21 @@ var update = function (modifier) {
 // Draw everything
 var render = function () {
   
-
-  // if (hero.x >= canvas.width)
-  //   hero.x = 0;
-  
   if (bg1Ready) {
-    ctx.drawImage(bg1Image, -hero.x, hero.angle);
+    ctx.drawImage(bg1Image, 0, 0);
   }
-  // if (bg2Ready) {
-  //   ctx.drawImage(bg2Image, -hero.x + canvas.width, 0);
-  // }
-
-  // hero.position = hero.V_x + 32
-  // if (heroReady) {
-  //   //ctx.drawImage(heroImage, hero.V_x, hero.y);
-    
-  //   drawSprite(heroImage, hero.position, hero.y, hero.angle, 1)
-  //   //      imageObject, x, y, rotation, scale)
-  //   //XXX: do I need to convert angle from/to radians?
-  // }
-
-  // if (monsterReady) {
-  //   ctx.drawImage(monsterImage, monster.x, monster.y);
-  // }
-
-  if (39 in keysDown && flamesReady) { // Engine goes!
-    drawSprite(flamesImage, hero.position-Math.cos(hero.angle)*64, hero.y + Math.sin(hero.angle)*64, hero.angle, 1)
-
-    //ctx.drawImage(flamesImage, hero.position - 64, hero.y+32);
+  for (i=0;i<planets.length;i++) {
+    Circle(planets[i].x, planets[i].y, planets[i].radius, planets[i].r, planets[i].g, planets[i].b);
+    // console.log("Key is "+i+" and Value is "+array[i]);
   }
+  // Circle(100,100,50, 255, 0, 0 );
   
   // Score
   ctx.fillStyle = "rgb(250, 250, 250)";
   ctx.font = "24px Helvetica";
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
-  // ctx.fillText("FP?: " + delta + "\nangle: " + hero.angle, 32, 10);//monstersCaught, 32, 32);
-  // ctx.fillText("On ground?: "+ onGround, 32, 42);//monstersCaught, 32, 32);
+  ctx.fillText("FP?: " + delta + "\nblah", 32, 32);//monstersCaught, 32, 32);
 
 };
 
@@ -231,6 +188,7 @@ var main = function () {
 
   then = now;
 };
+
 
 // Let's play this game!
 reset();
