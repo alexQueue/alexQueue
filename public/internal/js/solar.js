@@ -34,15 +34,15 @@ function planet(x,y,radius,r,g,b, V_x, V_y)
   //   updateAcceleration(this);
   // }
 }
-function planet(position, velocity, radius, r,g,b) {
-  this.position = position;
-  this.velocity = velocity;
-  this.acceleration = new vector(0, 0);
-  this.radius = radius;
-  this.r = r;
-  this.g = g;
-  this.b = b;
-}
+// function planet(position, velocity, radius, r,g,b) {
+//   this.position = position;
+//   this.velocity = velocity;
+//   this.acceleration = new vector(0, 0);
+//   this.radius = radius;
+//   this.r = r;
+//   this.g = g;
+//   this.b = b;
+// }
 function vector(x, y) {
   this.x=x;
   this.y=y;

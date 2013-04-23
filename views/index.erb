@@ -4,6 +4,9 @@
 <head>
 <meta charset="utf-8">
 <title>Alex Quinlan, Freelance Developer Extraordinnaire</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="/internal/images/favicon.ico">
+
 <link href="external/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="external/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 <link href="external/css/render.css" rel="stylesheet" type="text/css" />
@@ -13,6 +16,7 @@
 <script type="text/javascript" src="external/js/bootstrap-collapse.js"></script>
 <script type="text/javascript" src="external/js/jquery.localscroll-1.2.7-min.js"></script>
 <script type="text/javascript" src="external/js/jquery.scrollTo-1.4.2-min.js"></script>
+
 
 <script type="text/javascript">
 <!--
@@ -67,11 +71,17 @@ if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i
               <p>
                 <ul>
                   <li>
-                    Ruby (and Sinatra)
+                    Ruby (Sinatra and DataMapper)
+                  </li>
+                  <li>
+                    SQL
                   </li>
                   <li>
                     HTML, CSS, JavaScript
-                  </li>  
+                  </li> 
+                  <li>
+                    C# .NET
+                  </li> 
                   <li>
                     Objective-C
                   </li>
@@ -104,17 +114,25 @@ if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i
 <!-- /floating objects in background -->
 
 <!--#second-->
+
 <div id="about">    
-        <div class="container">
-        <div class="story">
+  <div class="container">
+    <div class="story">
       <div class="row">
-                    <h1>About us</h1>
-                    <h3>Center content</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio. Donec egestas aliquet facilisis. Nunc eu nunc eget neque ornare fringilla. Nam vel sodales lectus. Nulla in pellentesque eros. Donec ultricies, enim vitae varius cursus, risus mauris iaculis neque, euismod sollicitudin metus erat vitae sapien. Sed pulvinar.</p>
-            </div>
-        </div><!--.story--> 
-    </div>
+        <!-- <canvas id="canvas"></canvas> -->
+        <h1>About</h1>
+        <h3>Center content</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio. Donec egestas aliquet facilisis. Nunc eu nunc eget neque ornare fringilla. Nam vel sodales lectus. Nulla in pellentesque eros. Donec ultricies, enim vitae varius cursus, risus mauris iaculis neque, euismod sollicitudin metus erat vitae sapien. Sed pulvinar.</p>
+      </div>
+    </div><!--.story--> 
+  </div>
 </div>
+<!-- Solar -->
+  <script src="internal/js/drawMethods.js"></script>
+  <script src="internal/js/solar-inputs.js"></script>
+
+  <script src="internal/js/solar.js"></script>
+<!-- /Solar -->
 <!--#second-->
 
 <!--#third-->
@@ -145,7 +163,7 @@ if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i
               </a>
             </li>
           </ul>
-          <h2>Other</h2>
+          <h2>Other:</h2>
           <ul class="thumbnails">
             <li class="span3">
               <a href="#second" class="thumbnail">
@@ -213,6 +231,9 @@ if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i
   </div>
   <p>
   Special thanks to <a href="http://headlikeanorange.tumblr.com/">Head Like an Orange</a> for his amazing GIFs.</p>
+  <a style="" href="http://stackoverflow.com/users/902907/alexqueue">
+    <img src="http://stackoverflow.com/users/flair/902907.png" width="208" height="58" alt="profile for AlexQueue at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for AlexQueue at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+  </a>
 </footer>
 <!-- /footer --> 
 
@@ -234,6 +255,8 @@ $(document).ready(function(){
   $('.bg').parallax("5%", 3000, 0.8, true);
   $('.bg2').parallax("30%", 3500, 0.8, true);
   $('#portfolio').parallax("50%", 0, 0.1, true);
+  $('#canvas').parallax("30%", 3500, 0.8, true);
+
   $('#fourth').parallax("50%", 0, 0.1, true);
 })
   $('#navbar').scrollspy();
