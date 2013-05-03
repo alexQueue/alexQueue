@@ -172,3 +172,12 @@ note : this will break bootstrap fluid and responsive.css
 	overflow:hidden;
 	top: 1379px;
 }
+
+.name-logo{
+	font-style: italic;
+}
+
+.skills, .skills h2 {
+	font-weight: 300;
+}
+
