@@ -174,7 +174,7 @@ note : this will break bootstrap fluid and responsive.css
 }
 
 .name-logo{
-	font-style: italic;
+	xfont-style: italic;
 }
 
 .skills, .skills h2 {
