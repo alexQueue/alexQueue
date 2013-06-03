@@ -102,10 +102,10 @@ span.rnd {
 
 /* pages */
 #home {
-	background:url(/internal/images/rain.gif) 0px 40px no-repeat fixed;
-	background:url(/internal/images/wave.gif) 0px 40px no-repeat fixed;
+	/*background:url(/internal/images/rain.gif) 0px 0px no-repeat fixed;*/
+	background:url(/internal/images/wave.gif) 0px 0px no-repeat fixed;
 
-	background-size: 100% 100%;
+	background-size: 100% 840px;
 	color: white;
 	height: 800px; /*1200px; */
 	padding: 160px 0 0 0;
@@ -113,11 +113,12 @@ span.rnd {
 
 @media (max-width:700px){
 	#home {
-		background-size: 1000px 100%;
+		background-size: 1000px 840px;
 	}
 }
 
 #about {
+	display: none;
 	/*background: url(/internal/images/sea1.gif) 50% 0 no-repeat fixed;*/
 	background:url(/internal/images/solar-bg.jpg) 50% 0 no-repeat fixed;
 	/*background: #333;*/
@@ -132,7 +133,7 @@ span.rnd {
 
 #portfolio {
 	background: #333;
-	/*background:url(/internal/images/solar-bg.jpg) 50% 0 no-repeat fixed;*/
+	background:url(/internal/images/solar-bg.jpg) 50% 0 no-repeat fixed;
 	color: white;
 	margin: 0 auto;
 	padding: 40px 0 200px 0;
@@ -205,9 +206,18 @@ note : this will break bootstrap fluid and responsive.css
 }
 
 .navbar-inner {
-	/*background-image: none;*/
-	background-color: darkcyan;
-	/*opacity: .9;*/
+	background-image: none;
+	background-color: black;
+	opacity: .8;
 	/*color: white;*/
 }
 
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+	background-color: inherit;
+}
+
+aside {
+	float: left;
+	position: fixed;
+	left:0;
+}
