@@ -144,26 +144,21 @@
 
 <!--#second-->
 
-<div id="about">    
+<!-- <div id="about">    
   <div class="container">
     <div class="story">
       <div class="row">
-        <!-- <canvas id="canvas"></canvas> -->
         <h1>About</h1>
         <p>I'm a passionate developer who has been coding since 2000. I graduated in 2011 with a BS in Applied Physics from Columbia University and a BA from Oberlin College in Engineering.</p>
       </div>
-    </div><!--.story--> 
+    </div>
   </div>
 </div>
-<!-- Solar -->
   <script src="internal/js/drawMethods.js"></script>
   <script src="internal/js/solar-inputs.js"></script>
 
   <script src="internal/js/solar.js"></script>
-<!-- /Solar -->
-<!--#second-->
-
-<!--#third-->
+ -->
 <div id="portfolio">
   <div class="container-fluid">
     <div class="story">
@@ -291,11 +286,11 @@ $(document).ready(function(){
   // inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling.
   // outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport.
   $('#intro').parallax("50%", 0, 0.1, true);
-  $('#about').parallax("50%", 0, 0.1, true);
+  // $('#about').parallax("50%", 0, 0.1, true);
   $('.bg').parallax("5%", 3000, 0.8, true);
   $('.bg2').parallax("30%", 3500, 0.8, true);
-  $('#portfolio').parallax("50%", 0, 0.1, true);
-  $('#canvas').parallax("30%", 3500, 0.8, true);
+  $('#portfolio').parallax("50%", 2000, 0.4, true);
+  $('#canvas').parallax("30%", 3500, 0.3, true);
 
   $('#fourth').parallax("50%", 0, 0.1, true);
 })

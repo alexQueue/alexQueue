@@ -120,9 +120,10 @@ span.rnd {
 #about {
 	display: none;
 	/*background: url(/internal/images/sea1.gif) 50% 0 no-repeat fixed;*/
-	background:url(/internal/images/solar-bg.jpg) 50% 0 no-repeat fixed;
+	background:url(/internal/images/solar-bg.jpg) 0 0 no-repeat fixed;
+	background-repeat:repeat-y;
 	/*background: #333;*/
-
+	background-height: 400px;
 	/*background-size: 100%;*/
 	color: white;
 	height: 300px; /*1300px;*/
@@ -214,6 +215,10 @@ note : this will break bootstrap fluid and responsive.css
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
 	background-color: inherit;
+}
+
+.container-fluid {
+	padding-right: 35px;
 }
 
 aside {
