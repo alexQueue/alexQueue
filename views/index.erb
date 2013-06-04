@@ -170,32 +170,36 @@
           <h2>Web:</h2>
           
           <ul class="thumbnails">
-            <li class="span3">
-              <a href="http://mytimeline.com" class="thumbnail" target="_blank">
-                <img src="/internal/images/mtl1.png" alt="" style="">
-              </a>
-              <p>Frontend and backend (Ruby Sinatra, PostgreSQL) developer.</p>
-            </li>
-            <li class="span3">
-              <a href="http://gifgrow.com" class="thumbnail" target="_blank">
-                <img src="/internal/images/gifgrow1.png" alt="">
-              </a>
-              <p>Personal project. Designed, wrote front and back ends (Ruby Sinatra, PostgreSQL)</p>
-            </li>
-            <li class="span3">
-              <a href="http://busker.fm" class="thumbnail" target="_blank">
-                <img src="/internal/images/busker1.png" alt="">
-              </a>
-              <p>Backend developer (Ruby Sinatra, PostgreSQL)</p>
-            </li>
-          <!-- </ul> -->
-          <!-- <ul class="thumbnails"> -->
-            <li class="span3">
-              <a href="http://arizonadreamvacation.com" class="thumbnail" target="_blank">
-                <img src="/internal/images/ADZ.png" alt="">
-              </a>
-              <p>Frontend, backend developer</p>
-            </li>
+            <span class="xspan6 half">
+              <li class="span3">
+                <a href="http://mytimeline.com" class="thumbnail" target="_blank">
+                  <img src="/internal/images/mtl1.png" alt="" style="">
+                </a>
+                <p>Frontend and backend (Ruby Sinatra, PostgreSQL) developer.</p>
+              </li>
+              <li class="span3">
+                <a href="http://gifgrow.com" class="thumbnail" target="_blank">
+                  <img src="/internal/images/gifgrow1.png" alt="">
+                </a>
+                <p>Personal project. Designed, wrote front and back ends (Ruby Sinatra, PostgreSQL)</p>
+              </li>
+            </span>
+            <span class="xspan6 half">
+              <li class="span3">
+                <a href="http://busker.fm" class="thumbnail" target="_blank">
+                  <img src="/internal/images/busker1.png" alt="">
+                </a>
+                <p>Backend developer (Ruby Sinatra, PostgreSQL)</p>
+              </li>
+            <!-- </ul> -->
+            <!-- <ul class="thumbnails"> -->
+              <li class="span3">
+                <a href="http://arizonadreamvacation.com" class="thumbnail" target="_blank">
+                  <img src="/internal/images/ADZ.png" alt="">
+                </a>
+                <p>Frontend, backend developer</p>
+              </li>
+            </span>
           </ul>
           <h2>Other:</h2>
           <ul class="thumbnails">
@@ -285,14 +289,17 @@ $(document).ready(function(){
   // adjuster - y position to start from.
   // inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling.
   // outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport.
-  $('#intro').parallax("50%", 0, 0.1, true);
-  // $('#about').parallax("50%", 0, 0.1, true);
-  $('.bg').parallax("5%", 3000, 0.8, true);
-  $('.bg2').parallax("30%", 3500, 0.8, true);
-  $('#portfolio').parallax("50%", 2000, 0.4, true);
-  $('#canvas').parallax("30%", 3500, 0.3, true);
 
-  $('#fourth').parallax("50%", 0, 0.1, true);
+  if(!navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+    $('#intro').parallax("50%", 0, 0.1, true);
+    // $('#about').parallax("50%", 0, 0.1, true);
+    $('.bg').parallax("5%", 3000, 0.8, true);
+    $('.bg2').parallax("30%", 3500, 0.8, true);
+    $('#portfolio').parallax("50%", 2000, 0.4, true);
+    $('#canvas').parallax("30%", 3500, 0.3, true);
+
+    $('#fourth').parallax("50%", 0, 0.1, true);
+  }
 })
   $('#navbar').scrollspy();
 </script>

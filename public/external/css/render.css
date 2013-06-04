@@ -111,12 +111,6 @@ span.rnd {
 	padding: 160px 0 0 0;
 }
 
-@media (max-width:700px){
-	#home {
-		background-size: 1000px 840px;
-	}
-}
-
 #about {
 	display: none;
 	/*background: url(/internal/images/sea1.gif) 50% 0 no-repeat fixed;*/
@@ -162,16 +156,24 @@ span.rnd {
 	padding: 40px 0 0 0;
 }
 
-/* objects */
+@media (max-device-width:640px){
+	#home {
+		/*background-size: 1000px 840px;*/
+		background-size: 100% 1000px;
+	}
+	#portfolio {
+		background-repeat: repeat-y;
+		background-position: 50% 900;
+		background-size: 100% 100%;
+	}
+}
+.half {
+        /*float: left !important;*/
+        /*width: 50% !important;*/
+    }
 
-/* 
-you can add floating object in to design :
 
-<div class="bg"></div>
-<div class="bg2"></div>
 
-note : this will break bootstrap fluid and responsive.css
-*/
 
 .bg {
 	background: url(../assets/objects.png) top left no-repeat fixed;
