@@ -9,7 +9,7 @@
 
   <link href="external/css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="external/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
-  <link href="external/css/render.css" rel="stylesheet" type="text/css" />
+  <link href="internal/css/all.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="external/js/jquery-1.7.1.min.js"></script>
   <script type="text/javascript" src="external/js/jquery.parallax-1.1.js"></script>
   <script type="text/javascript" src="external/js/bootstrap-scrollspy.js"></script>
@@ -60,6 +60,7 @@
             <!-- <li><a href="#fourth">Fourth</a></li> -->
             <li><a href="#fifth">Contact</a></li>
             <li><a href="/internal/AlexResumeCS-Web.pdf" target="_blank">CV</a></li>
+            <!-- <li><a href="/blog">Blog</a></li> -->
           </ul>
         </div>
       </div>
@@ -90,7 +91,7 @@
         </div>
         <div class="span9">
           <h1 class="name-logo">ALEX QUINLAN <!-- <span class="rnd">{1.1}</span> --></h1>
-          <p>Brooklyn-based freelance developer</p>
+          <p>Brooklyn-based freelance engineer/developer</p>
           <div class="row-fluid">
             <div class="span5 skills">
               <h2>Skills:</h2>
@@ -129,6 +130,7 @@
       </div>
       <!--/row--> 
     </div>
+    <!-- <div id="bubble">V</div> -->
   </div>
   <!--.story--> 
 </div>
@@ -163,8 +165,13 @@
   <div class="container-fluid">
     <div class="story">
       <div class="row-fluid">
-        <h1>Experience </h1>
-        <p>I'm a passionate developer who has been coding since middle school. I graduated in 2011 with a BS in Applied Physics from Columbia University and a BA from Oberlin College in Engineering.</p>
+        <div class="span3">
+        </div>
+
+        <div class="span9">
+          <h1>Experience </h1>
+          <p>I'm a passionate developer who has been coding since middle school. I graduated in 2011 with a BS in Applied Physics from Columbia University and a BA from Oberlin College in Engineering.</p>
+        </div>
         <div class="span12">
 
           <h2>Web:</h2>
@@ -278,29 +285,29 @@
 
 <!-- Le JS --> 
 <script>
-$(document).ready(function(){
-  $('#navi').localScroll(800);
-  RepositionNav();
-  $(window).resize(function(){
+  $(document).ready(function(){
+    $('#navi').localScroll(800);
     RepositionNav();
-  }); 
-  // .parallax(xPosition, adjuster, inertia, outerHeight) options:
-  // xPosition - Horizontal position of the element.
-  // adjuster - y position to start from.
-  // inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling.
-  // outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport.
+    $(window).resize(function(){
+      RepositionNav();
+    }); 
+    // .parallax(xPosition, adjuster, inertia, outerHeight) options:
+    // xPosition - Horizontal position of the element.
+    // adjuster - y position to start from.
+    // inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling.
+    // outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport.
 
-  if(!navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-    $('#intro').parallax("50%", 0, 0.1, true);
-    // $('#about').parallax("50%", 0, 0.1, true);
-    $('.bg').parallax("5%", 3000, 0.8, true);
-    $('.bg2').parallax("30%", 3500, 0.8, true);
-    $('#portfolio').parallax("50%", 2000, 0.4, true);
-    $('#canvas').parallax("30%", 3500, 0.3, true);
+    if(!navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+      $('#intro').parallax("50%", 0, 0.1, true);
+      // $('#about').parallax("50%", 0, 0.1, true);
+      $('.bg').parallax("5%", 3000, 0.8, true);
+      $('.bg2').parallax("30%", 3500, 0.8, true);
+      $('#portfolio').parallax("50%", 2000, 0.4, true);
+      $('#canvas').parallax("30%", 3500, 0.3, true);
 
-    $('#fourth').parallax("50%", 0, 0.1, true);
-  }
-})
+      $('#fourth').parallax("50%", 0, 0.1, true);
+      }
+  });
   $('#navbar').scrollspy();
 </script>
 
