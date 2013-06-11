@@ -75,6 +75,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.5.2)
+    newrelic_rpm (3.6.1.87)
     nokogiri (1.5.5)
     pg (0.14.0)
     rack (1.5.2)
@@ -114,6 +115,7 @@ DEPENDENCIES
   do_postgres
   fog
   json
+  newrelic_rpm
   pg
   sinatra
   sinatra-reloader

@@ -37,53 +37,57 @@ get '/' do
   erb :index, :layout => false
 end
 
-get '/solar' do 
-  erb :solar, :layout => false
-end
+# get '/blog' do 
+#   erb :blog, :layout => false
+# end
+
+# get '/solar' do 
+#   erb :solar, :layout => false
+# end
 
 
 # User Auth ####
 
-get "/logout" do
-  logout
-  redirect '/'
-end
+# get "/logout" do
+#   logout
+#   redirect '/'
+# end
 
-get "/signup" do 
-  erb :signup
-end
+# get "/signup" do 
+#   erb :signup
+# end
 
-get "/login" do
-  erb :login
-end
+# get "/login" do
+#   erb :login
+# end
 
-post "/signup" do 
-  salt = Time.now.to_s
-  u = User.create(:name => params[:name],
-              :salt => salt, 
-              :password => password_hash(salt, params[:password])
-              )
-  if u.saved?
-    login u.id
-    redirect '/'
-  else
-    u.errors.each do |e|
-      p e
-    end
-    "Registration failed"
-  end
-end
+# post "/signup" do 
+#   salt = Time.now.to_s
+#   u = User.create(:name => params[:name],
+#               :salt => salt, 
+#               :password => password_hash(salt, params[:password])
+#               )
+#   if u.saved?
+#     login u.id
+#     redirect '/'
+#   else
+#     u.errors.each do |e|
+#       p e
+#     end
+#     "Registration failed"
+#   end
+# end
 
-post "/login" do
-  u = User.first(:name_lower => params[:name].downcase)
-  if u and verify_pass(u, params[:password])
-    login(u.id)
-    redirect '/'
-  elsif u
-    p 'invalid password'
-    "Invalid username or password"
-  else
-    p 'invalid username'
-    "Invalid username or password"
-  end
-end
+# post "/login" do
+#   u = User.first(:name_lower => params[:name].downcase)
+#   if u and verify_pass(u, params[:password])
+#     login(u.id)
+#     redirect '/'
+#   elsif u
+#     p 'invalid password'
+#     "Invalid username or password"
+#   else
+#     p 'invalid username'
+#     "Invalid username or password"
+#   end
+# end
