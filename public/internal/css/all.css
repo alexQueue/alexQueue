@@ -233,6 +233,7 @@ span.rnd {
 }
 
 #bubble {
+  /*display: none;*/
   cursor: pointer;
   position: fixed;
   left: 50%;

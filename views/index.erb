@@ -145,7 +145,7 @@
         }, 4000);
         
         $("#bubble").click(function(){
-          $("#bubble").delay(0).fadeOut();
+          // $("#bubble").delay(0).fadeOut();
           $("body").scrollTo($('#portfolio'), 800);
         });
       
@@ -307,6 +307,10 @@
 <script>
 
   $(document).ready(function(){
+    // if ($("body").scrollTop() < $("#home").height() - $(window).height() + 200) {
+    //   $("#bubble").show();
+    // }
+
     $('#navi').localScroll(800);
     RepositionNav();
     $(window).resize(function(){
