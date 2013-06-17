@@ -248,5 +248,7 @@ span.rnd {
   /*border-radius: 50%;*/
   font-size: 8em;
   font-weight: 300;
-
+}
+#bubble > i{
+  cursor: pointer;
 }

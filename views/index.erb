@@ -135,7 +135,7 @@
       </div>
       <!--/row--> 
     </div>
-    <div ><i class="icon-angle-down" id="bubble"></i></div>
+    <i class="icon-angle-down" id="bubble"></i>
     <script>
       $(document).ready(function() {
         setTimeout(function(){
@@ -314,13 +314,13 @@
     }); 
     $(window).scroll(
     function(e) {
-      if ($("body").scrollTop() > $("#home").height() - $(window).height() + 200) {
+      if ($(window).scrollTop() > $("#home").height() - $(window).height() + 200) {
         $("#bubble").fadeOut();
       } else {
         $("#bubble").fadeIn();
       }
     });
-    
+
     // .parallax(xPosition, adjuster, inertia, outerHeight) options:
     // xPosition - Horizontal position of the element.
     // adjuster - y position to start from.
