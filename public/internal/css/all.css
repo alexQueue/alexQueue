@@ -233,14 +233,19 @@ span.rnd {
 }
 
 #bubble {
+  cursor: pointer;
   position: fixed;
-  margin:auto;
+  left: 50%;
+  margin-right:40px;
+  /*margin:auto;*/
+  /*margin-left: auto;*/
   bottom: 10px;
-  background-color: rgba(0, 100, 255, 0.6);
+  /*background-color: rgba(0, 100, 255, 0.6);*/
   /*padding:40px;*/
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-
+  /*width: 80px;*/
+  /*height: 80px;*/
+  /*border-radius: 50%;*/
+  font-size: 8em;
+  font-weight: 300;
 
 }

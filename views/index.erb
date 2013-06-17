@@ -9,8 +9,11 @@
 
   <link href="external/css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="external/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.css" rel="stylesheet">
+
   <link href="internal/css/all.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="external/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="external/js/jqueryui.js"></script>
   <script type="text/javascript" src="external/js/jquery.parallax-1.1.js"></script>
   <script type="text/javascript" src="external/js/bootstrap-scrollspy.js"></script>
   <script type="text/javascript" src="external/js/bootstrap-collapse.js"></script>
@@ -130,7 +133,17 @@
       </div>
       <!--/row--> 
     </div>
-    <!-- <div id="bubble">V</div> -->
+    <div ><i class="icon-angle-down" id="bubble"></i></div>
+    <script>
+      $(document).ready(function() {
+        $("#bubble").delay(4000).effect("bounce", { times:3 }, 300);
+        $("#bubble").click(function(){
+          $("#bubble").delay(0).fadeOut();
+          $("body").scrollTo($('#portfolio'), 800);
+        });
+      
+      });
+    </script>
   </div>
   <!--.story--> 
 </div>
