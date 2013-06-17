@@ -13,6 +13,8 @@
 
   <link href="internal/css/all.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="external/js/jquery-1.7.1.min.js"></script>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+
   <script type="text/javascript" src="external/js/jqueryui.js"></script>
   <script type="text/javascript" src="external/js/jquery.parallax-1.1.js"></script>
   <script type="text/javascript" src="external/js/bootstrap-scrollspy.js"></script>
@@ -136,7 +138,12 @@
     <div ><i class="icon-angle-down" id="bubble"></i></div>
     <script>
       $(document).ready(function() {
-        $("#bubble").delay(4000).effect("bounce", { times:3 }, 300);
+        setTimeout(function(){
+          if( $('#bubble').is(':visible') ) {
+            $("#bubble").effect("bounce", { times:3 }, 300);
+          }
+        }, 4000);
+        
         $("#bubble").click(function(){
           $("#bubble").delay(0).fadeOut();
           $("body").scrollTo($('#portfolio'), 800);
@@ -298,12 +305,32 @@
 
 <!-- Le JS --> 
 <script>
+
   $(document).ready(function(){
     $('#navi').localScroll(800);
     RepositionNav();
     $(window).resize(function(){
       RepositionNav();
     }); 
+    obj = $('#home')
+    if( obj.scrollTop == (obj.scrollHeight - obj.offsetHeight)) { alert('test');}
+
+    // $('body').bind('scroll',function(e) {
+    $(window).scroll(
+    function(e) {
+      if ($("body").scrollTop() > $("#home").height() - $(window).height() + 200) {
+        $("#bubble").fadeOut();
+      } else {
+        $("#bubble").fadeIn();
+      }
+    });
+
+    // $("#portfolio").hover(function() {
+    //   $("#bubble").fadeOut();
+    // });
+    // $("#home").hover(function() {
+    //   $("#bubble").fadeIn();
+    // });
     // .parallax(xPosition, adjuster, inertia, outerHeight) options:
     // xPosition - Horizontal position of the element.
     // adjuster - y position to start from.
