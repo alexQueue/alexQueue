@@ -3,6 +3,7 @@ require 'sinatra'
 
 require './helpers/helpers'
 
+use Rack::Deflater
 
 if development?
   puts 'DEVELOPMENT'
